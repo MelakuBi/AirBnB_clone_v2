@@ -1,3 +1,4 @@
+# 5. Puppet for setup - Redo the task #0 but by using Puppet:
 exec { "exec_1":
   command => "sudo apt-get update -y",
   path    => ["/usr/bin", "/bin"],
