@@ -7,8 +7,8 @@ from sqlalchemy.orm import relationship
 
 
 class User(BaseModel, Base):
-    """This class defines a user by various attributes"""
-     __tablename__ = "users"
+    """This class defines a user by various attributes """
+    __tablename__ = "users"
     if getenv("HBNB_TYPE_STORAGE") == "db":
         email = Column(String(128), nullable=False)
         password = Column(String(128), nullable=False)
@@ -17,7 +17,7 @@ class User(BaseModel, Base):
         places = relationship('Place', cascade="delete", backref="user")
         reviews = relationship('Review', cascade="delete", backref="user")
     else:
-    email = ''
-    password = ''
-    first_name = ''
-    last_name = ''
+        email = ""
+        password = ""
+        first_name = ""
+        last_name = ""
