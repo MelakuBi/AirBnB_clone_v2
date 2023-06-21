@@ -21,7 +21,7 @@ echo "
 " | sudo tee -a /data/web_static/releases/test/index.html
 sudo rm -rf /data/web_static/current/
 sudo ln -fs /data/web_static/releases/test/ /data/web_static/current
-sudo chown -R ubuntu:ubuntu /data/
+sudo chown -hR ubuntu:ubuntu /data/
 upd="\\\t# Update the Nginx configuration\n\t# to serve the content of /data/web_static/current/ to hbnb_static\n\tlocation /hbnb_static/ {\n\t\talias /data/web_static/current/;\n\t\tautoindex off;\n\t}\n"
 sudo sed -i "38i $upd" /etc/nginx/sites-available/default
 sudo service nginx restart
