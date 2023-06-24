@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """This is the console for AirBnB"""
 import cmd
-from models import storage
+''' from models import storage '''
+import models
 from datetime import datetime
 from models.base_model import BaseModel
 from models.user import User
@@ -129,7 +130,7 @@ class HBNBCommand(cmd.Cmd):
         Exceptions:
             NameError: when there is no object taht has the name
         """
-        objects = storage.all()
+        objects = models.storage.all()
         my_list = []
         if not line:
             for key in objects:
