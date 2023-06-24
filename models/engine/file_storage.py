@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-''' This is the file storage class for AirBnB '''
+"""This is the file storage class for AirBnB"""
 import json
 from models.base_model import BaseModel
 from models.user import User
@@ -80,4 +80,4 @@ class FileStorage:
 
     def close(self):
         """ call method for deserializing the JSON file to objects """
-self.reload()
+        self.reload()
