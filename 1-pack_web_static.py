@@ -1,18 +1,15 @@
 #!/usr/bin/python3
-''' all here doned '''
-from datetime import datetime
+""" a module to package web_static files """
+import datetime
+import os
 from fabric.api import local
-from os.path import isdir
 
 
 def do_pack():
-    """generates a tgz archive"""
-    try:
-        date = datetime.now().strftime("%Y%m%d%H%M%S")
-        if isdir("versions") is False:
-            local("mkdir versions")
-        file_name = "versions/web_static_{}.tgz".format(date)
-        local("tar -cvzf {} web_static".format(file_name))
-        return file_name
-    except:
-        return None
+    """ package function """
+    if not os.path.isdir("./versions"):
+        os.makedirs("./versions")
+    ntime = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+    local("tar -czzf versions/web_static_{}.tgz web_static/*".format(ntime))
+    return ("{}/versions/web_static_{}.tgz".format(os.path.dirname(
+        os.path.abspath(__file__)), ntime))
