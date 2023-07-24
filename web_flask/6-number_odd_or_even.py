@@ -21,7 +21,7 @@ def my_c(text):
 
 @my_app.route("/python", strict_slashes=False)
 @my_app.route("/python/<text>", strict_slashes=False)
-def my_python(text="is cool"):
+def my_python(text="is_cool"):
     return "Python {}".format(text.replace("_", " "))
 
 
@@ -29,45 +29,16 @@ def my_python(text="is cool"):
 def my_number(n):
     return "{} is a number".format(n)
 
-'''    check = print(n.is_integer())
-    if check == True:
-        return "{} is a number".format(n)
-    else:
-        pass '''
 
 @my_app.route("/number_template/<int:n>", strict_slashes=False)
-def my_number(n):
-'''    check = print(n.is_integer())
-    if check == True: ''' 
-    return <!DOCTYPE html>
-            <HTML lang="en">
-                <HEAD>
-                    <TITLE>HBNB</TITLE>
-                </HEAD>
-                <BODY>
-                    <H1>Number:{{ n }} </H1>
-                </BODY>
-            </HTML>
+def my_number_template(n):
+    return render_template("5-number.html", n=n)
 
-@my_app.route("/number_odd_or_even/<n>", strict_slashes=False)
-def my_number(n):
-    if (n % 2) == 0:
-        return <!DOCTYPE html>
-                <HTML lang="en">
-                <HEAD>
-                    <TITLE>HBNB</TITLE>
-                </HEAD>
-                <BODY>
-                    <H1>Number:{{ n }} is even </H1> 
-                </BODY>
-                </HTML>
-            else:
-                return <!DOCTYPE html>
-                <HTML lang="en">
-                <HEAD>
-                    <TITLE>HBNB</TITLE>
-                </HEAD>
-                <BODY>
-                    <H1>Number:{{ n }} is odd </H1>
-                </BODY>
-                </HTML>
+
+@my_app.route("/number_odd_or_even/<int:n>", strict_slashes=False)
+def my_number_odd_or_even(n):
+    return render_template("6-number_odd_or_even.html", n=n)
+
+
+if __name__ == "__main__":
+    my_app.run(host="0.0.0.0", port=5000)
